@@ -19,7 +19,7 @@ describe('Using the method GET in /products', function () {
       .get('/products')
     
     expect(response.status).to.be.equal(200);
-    expect(response.body.products).to.be.deep.equal(allProducts)
+    expect(response.body).to.be.deep.equal(allProducts)
   });
 
   it('GET productById', async function () {
