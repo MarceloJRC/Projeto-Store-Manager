@@ -10,7 +10,7 @@ const app = require('../../../src/app');
 const {
   allProducts,
   productById,
-} = require('./mock/products.Controllers.mock');
+} = require('./mock/products.Controller.mock');
 
 describe('Using the method GET in /products', function () {
   it('GET allProducts', async function () {
@@ -34,7 +34,7 @@ describe('Using the method GET in /products', function () {
   it('GET productById Not Found', async function () {
     const response = await chai
       .request(app)
-      .get('/products/100')
+      .get('/products/500')
     
     expect(response.status).to.be.equal(404);
     expect(response.body).to.be.deep.equal({ message: 'Product not found' });
