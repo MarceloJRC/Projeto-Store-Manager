@@ -14,7 +14,15 @@ const listProductsById = async (req, res) => {
   return res.status(404).json({ message: 'Product not found' });
 };
 
+const addProducts = async (req, res) => {
+  const { name } = req.body;
+  const { message } = await productsService.addProducts(name);
+  
+  res.status(201).json(message);
+};
+
 module.exports = {
   listAllProducts,
   listProductsById,
+  addProducts,
 };
