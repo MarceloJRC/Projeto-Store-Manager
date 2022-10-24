@@ -11,7 +11,7 @@ const listProductsById = async (req, res) => {
   const productById = await productsService.findProductsById(id);
   if (productById) return res.status(200).json(productById);
   
-  return res.status(404).json({ message: 'Product not found' });
+  res.status(404).json({ message: 'Product not found' });
 };
 
 const addProducts = async (req, res) => {
@@ -21,8 +21,18 @@ const addProducts = async (req, res) => {
   res.status(201).json(message);
 };
 
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const result = await productsService.findProductsById(id, name);
+  if (result) return res.status(200).json(result);
+
+  res.status(404).json({ message: 'Product not found' });
+};
+
 module.exports = {
   listAllProducts,
   listProductsById,
   addProducts,
+  updateProduct,
 };
